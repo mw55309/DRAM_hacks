@@ -12,4 +12,67 @@ What [others have suggested](https://github.com/shafferm/DRAM/issues/26#issuecom
 
 So, is there another way?
 
-Well, the DRAM description database schema is [easily discoverable](https://github.com/mw55309/DRAM_hacks/blob/main/dram_description_db_schema.sql), and for seven tables it is simply the ID and the DESCRIPTION field for each database.
+Well, the DRAM description database schema is [easily discoverable](https://github.com/mw55309/DRAM_hacks/blob/main/dram_description_db_schema.sql), and for seven tables it is simply the ID and the DESCRIPTION field for each database:
+
+dbCAN2 table:
+```sh
+id,description
+AA0,AA0
+AA10,"AA10 (formerly CBM33) proteins are copper-dependent lytic polysaccharide monooxygenases (LPMOs); some proteins have been shown to act on chitin, others on cellulose; lytic cellulose monooxygenase (C1-hydroxylating) (EC 1.14.99.54); lytic cellulose monooxygenase (C4-dehydrogenating)(EC 1.14.99.56); lytic chitin monooxygenase (EC 1.14.99.53)"
+AA11,"AA11 proteins are copper-dependent lytic polysaccharide monooxygenases (LPMOs); cleavage of chitin chains with oxidation of C-1 has been demonstrated for a AA11 LPMO from Aspergillus oryzae;"
+AA12,"AA12 The pyrroloquinoline quinone-dependent oxidoreductase activity was demonstrated for the CC1G_09525 protein of Coprinopsis cinerea."
+```
+
+KEGG table:
+```sh
+id,description
+eco:b0001,"eco:b0001  thrL; thr operon leader peptide"
+eco:b0034,"eco:b0034  caiF; cai operon transcriptional activator"
+eco:b0068,"eco:b0068  thiB; thiamine/thiamine pyrophosphate/thiamine monophosphate ABC transporter periplasmic binding protein"
+eco:b0101,"eco:b0101  yacG; DNA gyrase inhibitor"
+```
+
+MEROPs peptidase database:
+```sh
+id,description
+MER0000001,"MER0000001 - chymotrypsin B (Homo sapiens) [S01.152]#S01A#{peptidase unit: 34-263}~source CTRB_HUMAN~"
+MER0000034,"MER0000034 - trypsin Vb ({Rattus norvegicus}) (Rattus norvegicus) [S01.093]#S01A#{peptidase unit: 25-246}~source TRYB_RAT~"
+MER0000066,"MER0000066 - hypodermin B (Hypoderma lineatum) [S01.090]#S01A#{peptidase unit: 31-256}~source HYPB_HYPLI~"
+MER0000099,"MER0000099 - kallikrein 1-related peptidase b1 (Mus musculus) [S01.164]#S01A#{peptidase unit: 25-260}~source KLK1_MOUSE~"
+```
+
+PFam database:
+```sh
+id,description
+PF10417.10,"C-terminal domain of 1-Cys peroxiredoxin"
+PF12574.9,"120 KDa Rickettsia surface antigen"
+PF09847.10,"Membrane protein of 12 TMs"
+PF00244.21,"14-3-3 protein"
+```
+
+UniRef90 database:
+```sh
+id,description
+UniRef90_A0A5A9P0L4,"UniRef90_A0A5A9P0L4 Peptidylprolyl isomerase n=1 Tax=Triplophysa tibetana TaxID=1572043 RepID=A0A5A9P0L4_9TELE"
+UniRef90_G3HAC6,"UniRef90_G3HAC6 Titin n=5 Tax=Boreoeutheria TaxID=1437010 RepID=G3HAC6_CRIGR"
+UniRef90_A0A0D9RKL7,"UniRef90_A0A0D9RKL7 Uncharacterized protein n=1 Tax=Chlorocebus sabaeus TaxID=60711 RepID=A0A0D9RKL7_CHLSB"
+UniRef90_A0A6J1Z2E1,"UniRef90_A0A6J1Z2E1 titin isoform X1 n=3 Tax=Boreoeutheria TaxID=1437010 RepID=A0A6J1Z2E1_ACIJB"
+```
+
+UniProt Viral:
+```sh
+id,description
+NP_943779.1,"NP_943779.1 adenylate kinase [Mycobacterium phage PG1]"
+NP_943811.1,"NP_943811.1 hypothetical protein PBI_PG1_33 [Mycobacterium phage PG1]"
+NP_943843.1,"NP_943843.1 hypothetical protein PBI_PG1_65 [Mycobacterium phage PG1]"
+NP_943875.1,"NP_943875.1 hypothetical protein PBI_PG1_97 [Mycobacterium phage PG1]"
+```
+
+VOGDB database:
+```sh
+id,description
+VOG00001,"sp|P03041|RPC1_BPP22 Transcriptional activator protein C1; Xu"
+VOG00002,"sp|Q5UPJ9|YL122_MIMIV Putative ankyrin repeat protein L122; Xh"
+VOG00003,"sp|O22001|VXIS_BPMD2 Excisionase; Xr"
+VOG00004,"sp|P03795|Y28_BPT7 Protein 2.8; Xu"
+```
