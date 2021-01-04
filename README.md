@@ -76,3 +76,5 @@ VOG00002,"sp|Q5UPJ9|YL122_MIMIV Putative ankyrin repeat protein L122; Xh"
 VOG00003,"sp|O22001|VXIS_BPMD2 Excisionase; Xr"
 VOG00004,"sp|P03795|Y28_BPT7 Protein 2.8; Xu"
 ```
+
+Seems to me that producing these tables independently of DRAM should be pretty simple, and then we can work on improving the SQLite upload problem - which, in DRAM, uses SQLalchemy.
