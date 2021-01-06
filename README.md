@@ -87,8 +87,9 @@ Well, in this github repo is a bunch of scripts that should provide the CSV file
 * run DRAM-setup.py in the usual way until it starts creating the description_db.sqlite, then kill the process
 * go in to the DRAM_data directory
 * clone this repository
-* run the seven perl scripts to create CVS files for import
+* run the seven perl scripts to create CSV files for import
+* move the CSV files and dram_description_db_schema.sql to an SSD or other ultra fast disk
 * create an empty sqlite database ```sqlite3 mydescription_db.sqlite```
 * create the DB schema ```.read dram_description_db_schema.sql```
 * set to mode csv ```.mode csv```
-* import each CSV file e.g. ```import csvfilename tablename```
+* import each CSV file e.g. ```.import csvfilename tablename```
