@@ -81,6 +81,9 @@ Seems to me that producing these tables independently of DRAM should be pretty s
 
 Well, in this github repo is a bunch of scripts that should provide the CSV files needed to populate the description DB schema. So the steps would be:
 
+
+* __note you can't just do this on the same disk that DRAM-setup.py failed on - this would be as slow if not slower - but you _can_ move the files to an SSD, at which point the write speeds are much faster__
+* __I moved the data to my Windows SurfaceBook 3 which has a Tb SSD - took about ~3 hours to load all the data__
 * run DRAM-setup.py in the usual way until it starts creating the description_db.sqlite, then kill the process
 * go in to the DRAM_data directory
 * clone this repository
