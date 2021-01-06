@@ -9,9 +9,11 @@
 open(IN, "zcat uniref90.fasta.gz \| grep '>' |");
 while(<IN>) {
         chomp();
-        my ($id,@rest) = split(/ /);
-        $id =~ s/^>//;
+        $line = $_;
+        $line =~ s/^>//;
 
-        print '"', $id, '","', join(" ", @rest), '"', "\n";
+        my ($id,@rest) = split(/ /, $line);
+
+        print '"', $id, '","', $line, '"', "\n";
 }
 close IN;
