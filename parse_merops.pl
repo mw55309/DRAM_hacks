@@ -8,7 +8,7 @@
 
 open(IN, "cat merops_peptidases_nr.faa \| grep '>' |");
 while(<IN>) {
-        s/\n|\r//g;
+
         $line = $_;
         $line =~ s/\n|\r//g;
         $line =~ s/^>//;
