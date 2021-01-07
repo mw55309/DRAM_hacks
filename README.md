@@ -93,3 +93,20 @@ Well, in this github repo is a bunch of scripts that should provide the CSV file
 * create the DB schema ```.read dram_description_db_schema.sql```
 * set to mode csv ```.mode csv```
 * import each CSV file e.g. ```.import csvfilename tablename```
+
+
+Import commands in sqlite:
+
+```sql
+.read dram_description_db_schema.sql
+.mode csv
+BEGIN;
+.import uniref_description.csv uniref_description
+.import kegg_description.csv kegg_description
+.import viral_description.csv viral_description
+.import vogdb_description.csv vogdb_description
+.import peptidase_description.csv peptidase_description
+.import dbcan_description.csv dbcan_description
+.import pfam_description.csv pfam_description
+END;
+```
