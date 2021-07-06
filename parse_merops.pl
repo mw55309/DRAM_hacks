@@ -5,16 +5,15 @@
 #
 # Outputs a CSV file of id,description for import into sqlite
 #
-
-open(IN, "cat merops_peptidases_nr.faa \| grep '>' |");
+use strict;
+use warnings;
+my $infile = shift || "merops_peptidases_nr.faa";
+open(IN, "grep '^>' $infile |") || die "cannot open $infile: $!";
 while(<IN>) {
-
-        $line = $_;
-        $line =~ s/\n|\r//g;
-        $line =~ s/^>//;
-
-        my ($id,@rest) = split(/ /, $line);
-
-        print '"', $id, '","', $line, '"', "\n";
+    s/[\n\r]//g; # strip unix/dos osx newlines
+    if (/^>((\S+)\s+.+)/) {
+	my ($line,$id) = ($1,$2);
+	print join(",",map { sprintf('"%s"',$_); } ($id,$line)), "\n";
+    }
 }
 close IN;

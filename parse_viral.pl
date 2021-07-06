@@ -5,10 +5,13 @@
 #
 # Outputs a CSV file of id,description for import into sqlite
 #
+use strict;
+use warnings;
+my $infile = shift || "../database_files/viral.merged.protein.faa.gz";
 
-open(IN, "zcat viral.merged.protein.faa.gz \| grep '>' |");
+open(IN, "zgrep '^>' $infile |") || die "cannot open $infile: $!";
 while(<IN>) {
-        chomp();
+    
         $line = $_;
         $line =~ s/^>//;
 

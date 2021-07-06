@@ -6,14 +6,14 @@
 # Outputs a CSV file of id,description for import into sqlite
 #
 
-open(IN, "zcat uniref90.fasta.gz \| grep '>' |");
+use strict;
+use warnings;
+my $infile= "../database_files/uniref90.fasta.gz";
+open(IN, "zgrep $infile  '^>' |");
 while(<IN>) {
-        chomp();
-        $line = $_;
-        $line =~ s/^>//;
-
-        my ($id,@rest) = split(/ /, $line);
-
-        print '"', $id, '","', $line, '"', "\n";
+    chomp;
+    if( /^>((\S+)\s+.+)/ ) {
+	print join(",", map { sprintf('"%s"',$_ ) } ($2,$1)),"\n";
+    }
 }
 close IN;
