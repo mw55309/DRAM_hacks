@@ -5,17 +5,16 @@
 #
 # Outputs a CSV file of id,description for import into sqlite
 #
-
-open(IN, "zcat ../vog_annotations_latest.tsv.gz |");
+use strict;
+use warnings;
+my $infile = shift || "../vog_annotations_latest.tsv.gz";
+open(IN,"gzip -dc $infile |") || die "cannot open $infile with gzip: $!";
 while(<IN>) {
         next if m/^#/;
-
-        chomp();
-
-        my($GroupName,$ProteinCount,$SpeciesCount,$FunctionalCategory,$ConsensusFunctionalDescription) = split(/\t/);
-
-        my $desc = "$ConsensusFunctionalDescription; $FunctionalCategory";
-
-        print '"', $GroupName, '","', $desc, '"', "\n";
+	chomp;
+        my ($GroupName,$ProteinCount,$SpeciesCount,$FunctionalCategory,$ConsensusFunctionalDescription) = split(/\t/,$_);
+	
+        my $desc = sprintf("%s; %s",$ConsensusFunctionalDescription,$FunctionalCategory);
+	print join(",", map { sprintf('"%s"', $_) } ($GroupName, $desc) ), "\n";
 }
 close IN;
