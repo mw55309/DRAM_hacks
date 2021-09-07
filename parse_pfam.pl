@@ -6,32 +6,31 @@
 # Outputs a CSV file of id,description for import into sqlite
 #
 
-open(IN, "zcat ../Pfam-A.hmm.dat.gz |");
+use strict;
+use warnings;
+
+my $infile = shift || "../Pfam-A.hmm.dat.gz";
+
+open(IN, "gzip -dc $infile |") || die "cannot open $infile: $!";
 
 my $id = "";
 my $de = "";
 
 while(<IN>) {
-        chomp();
-
-        if (m/^#=GF\s+AC\s+(\S+)/) {
-                $id = $1;
+    chomp;
+    if (m/^#=GF\s+AC\s+(\S+)/) {
+	$id = $1;
+    } elsif (m/^#=GF\s+DE\s+(.*)/) {
+	$de = $1;
+    } elsif( m/^\/\//) {
+	if ($id ne "" && $de ne "") {
+	    print join(",", map { sprintf('"%s"',$_) } ( $id,$de) ), "\n";
+	    $id = $de = "";
+	} else {
+	    warn "One or more of '$id' or '$de' is empty\n";
+	    exit;
         }
-        if (m/^#=GF\s+DE\s+(.*)/) {
-                $de = $1;
-        }
-
-        if (m/^\/\//) {
-                if ($id ne "" && $de ne "") {
-                        print '"', $id, '","', $de, '"', "\n";
-                        $id = "";
-                        $de = "";
-                } else {
-                        warn "One or more of '$id' or '$de' is empty\n";
-                        exit;
-                }
-        }
-
+    }
 }
 
 close IN;
